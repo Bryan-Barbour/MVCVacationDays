@@ -1,0 +1,35 @@
+﻿@model VacationDays.Models.EmployeeModel
+
+@{
+    ViewData["Title"] = "DaysWorked";
+}
+
+<h1>Add Days Worked For Employee </h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <p>Current amount of days worked: @Model.TotalDaysWorked</p>
+        <form asp-action="Work">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="DaysToWork" class="control-label">Days Worked</label>
+                <input asp-for="DaysToWork" class="form-control"/>
+                <span asp-validation-for="DaysToWork" class="text-danger"></span>
+            </div>
+            <div/>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div/>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

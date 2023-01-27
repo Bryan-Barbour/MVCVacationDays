@@ -1,0 +1,49 @@
+﻿@model IEnumerable<VacationDays.Models.EmployeeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VacationDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalDaysWorked)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VacationDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalDaysWorked)
+            </td>
+            <td>
+                <a asp-action="Work" asp-route-id="@item.ID">Add Days Worked</a> |
+                <a asp-action="TakeVacation" asp-route-id="@item.ID">Take Vacation</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
